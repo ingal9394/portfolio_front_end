@@ -13,14 +13,41 @@
       crossorigin="anonymous"
     ></script>
     <!-- 구글폰트가서 무료폰트 선택하면 쓰고싶으면 써야하는거임 -->
-    <link
+    <!-- <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
-    />
+    /> -->
     <link rel="icon" type="image/png" href="imgs/favorite.png" />
     <link rel="stylesheet" href="style.css" />
     <!-- defer옵션은 html이  파싱중일때 js를 다운받고  파싱이 끝난뒤 js를 실행 -->
     <script src="main.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <!-- Navbar -->
+    <nav id="navbar">
+      <div class="navbar__logo">
+        <i class="fab fa-diaspora"></i>
+        <a href="#">KBS</a>
+      </div>
+      <div class="navbar__menu"></div>
+      <ul class="navar__menu">
+        <li class="navbar__menu__item">Home</li>
+        <li class="navbar__menu__item">About</li>
+        <li class="navbar__menu__item">Skills</li>
+        <li class="navbar__menu__item">Work</li>
+        <li class="navbar__menu__item">Testimonials</li>
+        <li class="navbar__menu__item">Contact</li>
+      </ul>
+    </nav>
+    <!-- Aboit -->
+    <section id="about"></section>
+    <!-- Skills -->
+    <section id="skills"></section>
+    <!-- Work -->
+    <section id="work"></section>
+    <!-- Testimonials -->
+    <section id="testimonials"></section>
+    <!-- Contact -->
+    <section id="contact"></section>
+  </body>
 </html>
