@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom properties</title>
+    <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/--* -->
+    <style>
+      /* css도 변수설정이 가능함 따라서 자주쓰는 색상,크기같은건 변수로 해도되는데  부모>자식 까지만 변수적용이가능함 
+         따라서 최고부모인 root에다가 설정하면 다쓸수있음  --를 시작으로 변수명을설정하여 쓰면됨
+         사용할땐 var(변수명) ; 으로 씀
+         변수자체를 적용하면서 특정부분에서 수정하고싶으면  calc(va(변수명)*2) 이런식으로 쓰면 수학적계산 가능*/
+
+      :root {
+        --background-color: thistle;
+        --text-color: whitesmoke;
+        --base: 8px;
+      }
+      .first-list {
+        background-color: var(--background-color);
+        color: var(--text-color, red);
+        margin-left: var(
+          --base,
+          10
+        ); /*이렇게 뒤에 매개변수 하나 더 넣으면 base에 값이 없으면 뒤에것을 씀*/
+      }
+
+      .second-list {
+        background-color: var(--background-color);
+        color: var(--text-color, red);
+        margin-left: calc(var(--base) * 2);
+      }
+
+      /*media에 root설정따로 해서  크기가 768이하면 설정된 root로 되는거임 일일히 막 따로 수정하고 할필요없음 */
+      @media screen and (max-width: 768px) {
+        :root {
+          --background-color: salmon;
+          --text-color: whitesmoke;
+          --base: 4px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="first-list">
+      <li>Orange</li>
+      <li>Apple</li>
+    </ul>
+    <ul class="second-list">
+      <li>Korea</li>
+      <li>Japan</li>
+      <li>China</li>
+    </ul>
+  </body>
+</html>
