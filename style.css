@@ -164,6 +164,10 @@ p {
   border: 2px solid var(--color-white);
   border-radius: var(--size-border-radius);
 }
+.home__contact:hover{
+  background-color: var(--color-pink);
+  color: var(--color-white);
+}
 
 /* Section common */
 .section{
