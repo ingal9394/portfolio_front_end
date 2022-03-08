@@ -107,6 +107,7 @@ p {
   padding: 16px;
   width: 100%;
   transition: all var(--animation-duration) ease-in-out;
+  z-index: 1;
 }
 #navbar.navbar--dark{
   background-color: var(--color-pink);
@@ -437,6 +438,10 @@ padding: 20px 40px;
   transform: scale(1.5);
   color: var(--color-yellow);
 }
+/* 스크롤 이벤트를 부드럽게  behavior 안먹으면 하는것*/
+/* * {
+  scroll-behavior: smooth;  
+  }  */
 
 /* FOr below 768px screen width  크기가 768이하면 나오게하는 반응형*/
 @media screen and (max-width : 768px) {
@@ -472,3 +477,4 @@ padding: 20px 40px;
     height: 80px;
   }
 }
+
