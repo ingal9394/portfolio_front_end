@@ -443,6 +443,28 @@ padding: 20px 40px;
   scroll-behavior: smooth;  
   }  */
 
+.arrow-up{
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  bottom:50px;
+  right:50px;
+  font-size:50px;
+  color:var(--color-white);
+  background-color: var(--color-pink);
+  border-radius: 50%;
+  opacity:0;
+  transition: all 300ms ease-in;
+   pointer-events: none; 
+}
+
+.arrow-up.visible{
+  opacity:1;  
+  pointer-events: auto; 
+}
+
+  /**/
+
 /* FOr below 768px screen width  크기가 768이하면 나오게하는 반응형*/
 @media screen and (max-width : 768px) {
   .navbar__toggle-btn{

@@ -47,6 +47,22 @@ document.addEventListener("scroll", () => {
   home.style.opacity = 1 - window.scrollY / homeHeight;
 });
 
+//스크롤 내릴때 화살표 보이게
+const arrowUp = document.querySelector(".arrow-up");
+document.addEventListener("scroll", () => {
+  if (window.scrollY > homeHeight / 2) {
+    arrowUp.classList.add("visible"); //css에 설정한 .arrow-up.visible 이 추가됨
+  } else {
+    arrowUp.classList.remove("visible");
+  }
+});
+
+const arrowupBtn = document.querySelector(".arrow-up");
+arrowupBtn.addEventListener("click", (event) => {
+  console.log("1");
+  scrollIntoView("#home");
+});
+
 //눌렀을떄 그쪽으로 가는거 많이쓰니까 그냥 기능으로 하나만듬
 function scrollIntoView(selector) {
   const scrollTo = document.querySelector(selector);
