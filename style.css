@@ -125,16 +125,17 @@ p {
 .navbar__menu__item{
   padding: 8px 12px;
   margin: 0 4px;
+  color: var(--color-white);
   cursor: pointer;
+  border:  1px solid transparent;  /*transparent 는 색상을 부모색상으로 맞추는거라 투명이라고보면됨*/
   border-radius: var(--size-border-radius);
 }
 
- .navbar__menu__item.active{
-  border:  1px solid var(--color-white);
-  
-} 
+ /* .navbar__menu__item.active{
+  border:  1px solid var(--color-white); 
+} */
 .navbar__menu__item:hover{
-  border:  1px solid var(--color-white);
+  border-color:  var(--color-white);
   background-color: var(--color-dark-pink);
 }
 
@@ -298,13 +299,13 @@ padding: 20px 40px;
   font-size: var(--font-regular);
   padding:8px 48px;
 }
-.categort__btn.active,
+.categort__btn.selected,
 .categort__btn:hover{
   background-color: var(--color-pink);
   color: var(--color-white);
 }
 
-.categort__btn.active .category__count,
+.categort__btn.selected .category__count,
 .categort__btn:hover .category__count{
   opacity: 1;
   top: 0;

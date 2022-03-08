@@ -72,6 +72,17 @@ workBtnContainer.addEventListener("click", (e) => {
   if (filter == null) {
     return;
   }
+
+  const active = document.querySelector(".categort__btn.selected");
+  active.classList.remove("selected");
+
+  //프로젝트 버튼선택하는거옆에 span 있는데 그거 눌러지면 e.target이 span으로 가서 add시 오류남
+  // span에는 selected가 없으니까
+  const target =
+    e.target.nodeName === "BUTTON" ? e.target : e.target.parentNode;
+
+  target.classList.add("selected");
+
   projectContatior.classList.add("anime-out");
   setTimeout(() => {
     projects.forEach((project) => {
@@ -84,7 +95,7 @@ workBtnContainer.addEventListener("click", (e) => {
     });
     projectContatior.classList.remove("anime-out");
   }, 300);
-  console.log(filter);
+  //console.log(filter);
 });
 
 //눌렀을떄 그쪽으로 가는거 많이쓰니까 그냥 기능으로 하나만듬
