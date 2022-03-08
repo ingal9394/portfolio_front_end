@@ -28,7 +28,14 @@ navbarMenu.addEventListener("click", (event) => {
   //scrollIntoView() 로 이동
   //const scrollTo = document.querySelector(link);
   //console.log(scrollTo);
+  navbarMenu.classList.remove("open");
   scrollIntoView(link);
+});
+
+//작은화면일때 navbar 토글버튼
+const navbarToggleBtn = document.querySelector(".navbar__toggle-btn");
+navbarToggleBtn.addEventListener("click", () => {
+  navbarMenu.classList.toggle("open");
 });
 
 //handle contact
