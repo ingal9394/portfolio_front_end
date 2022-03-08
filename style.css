@@ -329,16 +329,32 @@ padding: 20px 40px;
   display: flex;
   flex-wrap:  wrap;
   justify-content: center;
-  align-items: center;
+  opacity: 1;
+  transition:  all var(--animation-duration) ease-in;
+  
+}
+
+.work__projects.anime-out{
+  opacity: 0;
+  transform:  scale(0.96) translateY(40px);
 }
 
 .project{
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 280px;
   height: 250px;
   margin: 2px;
   background-color: var(--color-light-white);
 }
+
+.project.invisble{
+  display: none;
+}
+
+
 
 .project__img{
   max-width: 100%;
@@ -455,7 +471,7 @@ padding: 20px 40px;
   border-radius: 50%;
   opacity:0;
   transition: all 300ms ease-in;
-   pointer-events: none; 
+   pointer-events: none;  /*마우스가 위에 올라와있을때 없는것처럼 설정(손모양x)*/
 }
 
 .arrow-up.visible{

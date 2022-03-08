@@ -63,6 +63,30 @@ arrowupBtn.addEventListener("click", (event) => {
   scrollIntoView("#home");
 });
 
+//Projects
+const workBtnContainer = document.querySelector(".work__categories");
+const projectContatior = document.querySelector(".work__projects");
+const projects = document.querySelectorAll(".project");
+workBtnContainer.addEventListener("click", (e) => {
+  const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+  if (filter == null) {
+    return;
+  }
+  projectContatior.classList.add("anime-out");
+  setTimeout(() => {
+    projects.forEach((project) => {
+      console.log(project.dataset.type);
+      if (filter === "*" || filter === project.dataset.type) {
+        project.classList.remove("invisble");
+      } else {
+        project.classList.add("invisble");
+      }
+    });
+    projectContatior.classList.remove("anime-out");
+  }, 300);
+  console.log(filter);
+});
+
 //눌렀을떄 그쪽으로 가는거 많이쓰니까 그냥 기능으로 하나만듬
 function scrollIntoView(selector) {
   const scrollTo = document.querySelector(selector);
