@@ -484,8 +484,20 @@ padding: 20px 40px;
 
 /* FOr below 768px screen width  크기가 768이하면 나오게하는 반응형*/
 @media screen and (max-width : 768px) {
+  .root{ /*root는  전역 지역변수처럼 설정도 가능함 */
+     /* Font size */
+  --font-large: 30px;
+  --font-medium: 18px;
+  --font-regular: 16px;
+  --font-small: 14px;
+  --font-micro: 12px;
+
+  }
   .navbar__toggle-btn{
     display: block;
+    top: 16px;
+    right: 16px;    
+    font-size: var(--font-medium);
   }
   #navbar{
     flex-direction: column;
@@ -502,12 +514,19 @@ padding: 20px 40px;
     display: none;
   }
 
+  .section{
+    padding: 16px;
+    padding-top: 40px;
+  }
+
   .navbar__menu.open{
     display:block;
   }
 
   .about__majors{
     flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 0px;
   }
   .major{
     margin-bottom: 38px;
@@ -515,13 +534,37 @@ padding: 20px 40px;
   .skillset{
     flex-direction: column;
   }
+
+  .categort__btn{
+    margin: 4px 0;
+  }
   .project{
     flex-grow: 1; 
     /* 화면을 자동으로매꿔줌 */
   }
+  .testimonial{
+    flex-direction: column;
+    align-items: center;
+  }
   .testimonial__avataer{
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
+    
+  }
+  .testimonial__avataer:nth-child(odd),
+  .testimonial__avataer:nth-child(even){
+    margin: 8px;
+  }
+  .testimonial__speech-buble{
+    order:1;
+  }
+  .arrow-up{
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    line-height: 50px;
+    right: 16px;
+    bottom: 16px;
   }
 }
 
