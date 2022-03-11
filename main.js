@@ -14,7 +14,7 @@ document.addEventListener("scroll", () => {
   }
 });
 
-// handle scrolling when tapping on the navbar menu
+// navmenu를 눌렀을때 해당 부분으로 이동하는거 설정
 const navbarMenu = document.querySelector(".navbar__menu");
 navbarMenu.addEventListener("click", (event) => {
   const target = event.target;
@@ -30,6 +30,7 @@ navbarMenu.addEventListener("click", (event) => {
   //console.log(scrollTo);
   navbarMenu.classList.remove("open");
   scrollIntoView(link);
+  selectNavItem(target);
 });
 
 //작은화면일때 navbar 토글버튼
@@ -110,6 +111,8 @@ function scrollIntoView(selector) {
   const scrollTo = document.querySelector(selector);
   //behavior는 스크롤이 너무 빠르게움직여서 동작준거임
   scrollTo.scrollIntoView({ behavior: "smooth" });
+  //제일 마지막에 추가한것, 클릭으로 이동할때  navmenu에 해당부분으로 가면 solid 되는게 작동하지않아서  관련부분 추가함
+  selectNavItem(navItems[sectionIds.indexOf(selector)]);
 }
 
 // 1.모든 섹션 요소들을 가지고 온다
@@ -126,11 +129,20 @@ const sectionIds = [
 ];
 
 const sections = sectionIds.map((id) => document.querySelector(id));
+console.log(sections);
 const navItems = sectionIds.map((id) =>
   document.querySelector(`[data-link="${id}"]`)
 );
-console.log(sections);
-console.log(navItems);
+
+let selectedNavindex = 0;
+let selectedNavItem = navItems[0];
+
+function selectNavItem(selected) {
+  selectedNavItem.classList.remove("active");
+  selectedNavItem = selected;
+  selectedNavItem.classList.add("active");
+}
+
 const observerOptions = {
   root: null,
   rootMargin: "0px",
@@ -138,9 +150,31 @@ const observerOptions = {
 };
 const observerCallback = (entries, observer) => {
   entries.forEach((entry) => {
-    console.log(entry.target);
+    if (!entry.isIntersecting && entry.intersectionRatio > 0) {
+      const index = sectionIds.indexOf(`#${entry.target.id}`);
+
+      //스크롤링이 아래로 되어서 페이지가 올라옴
+      if (entry.boundingClientRect.y < 0) {
+        selectedNavindex = index + 1;
+      } else {
+        selectedNavindex = index - 1;
+      }
+    }
   });
 };
 
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 sections.forEach((section) => observer.observe(section));
+
+//scroll로 하면 navmenu 클릭시 이동하는것도 일종의 스크롤이라 같이 실행되서 잘 안됨, 따라서 스크롤이아닌 휠로 이동할때만 하도록함
+window.addEventListener("wheel", () => {
+  if (window.scrollY === 0) {
+    selectedNavindex = 0;
+  } else if (
+    window.scrollY + window.innerHeight ===
+    document.body.clientHeight
+  ) {
+    selectedNavindex = navItems.length - 1;
+  }
+  selectNavItem(navItems[selectedNavindex]);
+});
